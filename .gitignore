@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+bower_components/
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# AGENTS.md - project instructions
+AGENTS.md
