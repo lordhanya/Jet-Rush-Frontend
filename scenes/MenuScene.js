@@ -119,6 +119,22 @@ class MenuScene extends Phaser.Scene {
     showNameInputPrompt() {
         const name = prompt("Enter your pilot name:", this.playerName);
         if (name && name.trim().length > 0) {
+            const cleanName = name.trim().toUpperCase().replace(/[^A-Z]/g, '');
+            
+            if (!cleanName || cleanName.length === 0) {
+                alert('Invalid name! Use only letters A-Z');
+                return;
+            }
+            
+            const badWords = ['LAUDA', 'LAWDA', 'MC', 'FUCK', 'SHIT', 'ASS', 'BITCH', 'DICK', 'CUNT', 'COOK', 'COON', 'NIGGA', 'NIGGER', 'FAG', 'FAGGOT', 'COCK', 'PUSSY', 'XXX', 'SEX', 'WANK', 'WANKER', 'TIT', 'TITS', 'BOOB', 'ANAL', 'GAY', 'LESBO', 'LESBIAN', 'TRANNY', 'FUTO', 'HENTAI', 'INCEST', 'ZOOPHILE', 'BESTIAL', 'MILO', 'MILF'];
+            
+            for (const bad of badWords) {
+                if (cleanName.includes(bad)) {
+                    alert('Invalid name! That name is not allowed.');
+                    return;
+                }
+            }
+            
             this.playerName = name.trim().substring(0, 12);
             gameState.username = this.playerName;
             this.nameText.setText(this.playerName);
