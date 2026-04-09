@@ -346,7 +346,7 @@ class GameScene extends Phaser.Scene {
 
     async sendScore() {
         try {
-            const response = await fetch(GameConfig.API_URL, {
+            const response = await fetch(GameConfig.SCORE_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 

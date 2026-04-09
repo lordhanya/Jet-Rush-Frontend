@@ -114,7 +114,7 @@ class LeaderboardScene extends Phaser.Scene {
 
     async fetchLeaderboard() {
         try {
-            const response = await fetch(GameConfig.API_URL);
+            const response = await fetch(GameConfig.LEADERBOARD_URL);
             const text = await response.text();
             console.log('Leaderboard response:', text);
             

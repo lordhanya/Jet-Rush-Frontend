@@ -24,7 +24,8 @@ const config = {
 };
 
 const GameConfig = {
-    API_URL: 'https://jet-rush-backend.onrender.com/api/index.php',
+    SCORE_URL: 'https://jet-rush-backend.onrender.com/api/score.php',
+    LEADERBOARD_URL: 'https://jet-rush-backend.onrender.com/api/leaderboard.php',
     LANE_COUNT: 3,
     PLAYER_Y_OFFSET: 130,
     LANE_SWITCH_DURATION: 120,
