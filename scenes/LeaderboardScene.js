@@ -124,6 +124,13 @@ class LeaderboardScene extends Phaser.Scene {
             }
             
             const data = JSON.parse(text);
+            
+            if (data.error) {
+                console.error('Leaderboard error:', data.error);
+                this.displayLeaderboard([]);
+                return;
+            }
+            
             this.displayLeaderboard(data);
         } catch (e) {
             console.error('Failed to fetch leaderboard:', e);
