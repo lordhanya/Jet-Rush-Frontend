@@ -156,23 +156,23 @@ class LeaderboardScene extends Phaser.Scene {
         }
         
         const startY = height * 0.20;
-        const rowHeight = 36;
-        const maxDisplay = Math.min(scores.length, 10);
+        const rowHeight = 28;
+        const maxDisplay = Math.min(scores.length, 20);
         
-        const headerBg = this.add.rectangle(width / 2, startY - 12, 340, 28, 0x1a1a2e);
+        const headerBg = this.add.rectangle(width / 2, startY - 10, 340, 24, 0x1a1a2e);
         headerBg.setStrokeStyle(1, 0x9d4edd);
         
-        this.add.text(width * 0.18, startY - 12, 'RANK', { fontSize: '11px', color: '#9d4edd' }).setOrigin(0.5);
-        this.add.text(width * 0.42, startY - 12, 'PILOT', { fontSize: '11px', color: '#9d4edd' }).setOrigin(0.5);
-        this.add.text(width * 0.70, startY - 12, 'SCORE', { fontSize: '11px', color: '#9d4edd' }).setOrigin(0.5);
-        this.add.text(width * 0.90, startY - 12, 'DATE', { fontSize: '11px', color: '#9d4edd' }).setOrigin(0.5);
+        this.add.text(width * 0.18, startY - 10, 'RANK', { fontSize: '10px', color: '#9d4edd' }).setOrigin(0.5);
+        this.add.text(width * 0.42, startY - 10, 'PILOT', { fontSize: '10px', color: '#9d4edd' }).setOrigin(0.5);
+        this.add.text(width * 0.70, startY - 10, 'SCORE', { fontSize: '10px', color: '#9d4edd' }).setOrigin(0.5);
+        this.add.text(width * 0.90, startY - 10, 'DATE', { fontSize: '10px', color: '#9d4edd' }).setOrigin(0.5);
         
-        const listBg = this.add.rectangle(width / 2, startY + (maxDisplay * rowHeight) / 2 + 10, 
-            340, maxDisplay * rowHeight + 20, 0x0a0a1a, 0.9)
+        const listBg = this.add.rectangle(width / 2, startY + (maxDisplay * rowHeight) / 2 + 16, 
+            340, maxDisplay * rowHeight + 16, 0x0a0a1a, 0.95)
             .setStrokeStyle(1, 0x2a2a4a);
         
         scores.slice(0, maxDisplay).forEach((entry, index) => {
-            const y = startY + 20 + index * rowHeight;
+            const y = startY + 18 + index * rowHeight;
             const rank = index + 1;
             
             let medal = '';
@@ -203,30 +203,30 @@ class LeaderboardScene extends Phaser.Scene {
                 color = '#888899';
             }
             
-            const rowBg = this.add.rectangle(width / 2, y, 340, 32, bgColor, bgAlpha);
+            const rowBg = this.add.rectangle(width / 2, y, 340, 26, bgColor, bgAlpha);
             
             const rankText = this.add.text(width * 0.18, y, medal, {
                 fontFamily: 'Arial',
-                fontSize: '15px',
+                fontSize: '12px',
                 color: color
             }).setOrigin(0.5);
             
             const nameText = this.add.text(width * 0.42, y, entry.username.substring(0, 12), {
                 fontFamily: 'Arial',
-                fontSize: '14px',
+                fontSize: '11px',
                 color: '#ffffff'
             }).setOrigin(0, 0.5);
             
             const scoreText = this.add.text(width * 0.70, y, entry.score.toString(), {
                 fontFamily: 'Arial',
-                fontSize: '15px',
+                fontSize: '12px',
                 fontStyle: 'bold',
                 color: '#00ff88'
             }).setOrigin(0.5);
             
             const dateText = this.add.text(width * 0.90, y, entry.date ? entry.date.substring(5) : '', {
                 fontFamily: 'Arial',
-                fontSize: '11px',
+                fontSize: '9px',
                 color: '#666688'
             }).setOrigin(0.5);
         });
