@@ -108,23 +108,23 @@ class GameOverScene extends Phaser.Scene {
     createStats() {
         const { width, height } = this.scale;
         
-        const statsBg = this.add.rectangle(width / 2, height * 0.48, 280, 140, 0x1a1a2e, 0.9)
+        const statsBg = this.add.rectangle(width / 2, height * 0.50, 280, 170, 0x1a1a2e, 0.9)
             .setStrokeStyle(1, 0x9d4edd);
         
-        this.add.text(width / 2, height * 0.40, this.username, {
+        this.add.text(width / 2, height * 0.42, this.username, {
             fontFamily: 'Arial',
-            fontSize: '20px',
+            fontSize: '22px',
             color: '#9d4edd',
             fontStyle: 'bold'
         }).setOrigin(0.5);
         
-        this.add.text(width / 2, height * 0.47, 'FINAL SCORE', {
+        this.add.text(width / 2, height * 0.50, 'FINAL SCORE', {
             fontFamily: 'Arial',
-            fontSize: '12px',
+            fontSize: '14px',
             color: '#666688'
         }).setOrigin(0.5);
         
-        const scoreText = this.add.text(width / 2, height * 0.55, this.score.toString(), {
+        const scoreText = this.add.text(width / 2, height * 0.58, this.score.toString(), {
             fontFamily: 'Arial',
             fontSize: '52px',
             fontStyle: 'bold',

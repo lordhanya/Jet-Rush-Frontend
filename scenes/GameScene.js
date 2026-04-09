@@ -346,7 +346,7 @@ class GameScene extends Phaser.Scene {
 
     async sendScore() {
         try {
-            await fetch(GameConfig.API_URL, {
+            const response = await fetch(GameConfig.API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
@@ -354,6 +354,8 @@ class GameScene extends Phaser.Scene {
                     score: this.score 
                 })
             });
+            const text = await response.text();
+            console.log('Score sent response:', text);
         } catch (e) {
             console.error('Failed to send score:', e);
         }

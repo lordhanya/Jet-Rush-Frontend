@@ -115,11 +115,19 @@ class LeaderboardScene extends Phaser.Scene {
     async fetchLeaderboard() {
         try {
             const response = await fetch(GameConfig.API_URL);
-            const data = await response.json();
+            const text = await response.text();
+            console.log('Leaderboard response:', text);
+            
+            if (!text || text.trim() === '' || text.startsWith('<') || text.startsWith('<?')) {
+                this.displayLeaderboard([]);
+                return;
+            }
+            
+            const data = JSON.parse(text);
             this.displayLeaderboard(data);
         } catch (e) {
             console.error('Failed to fetch leaderboard:', e);
-            this.showError();
+            this.displayLeaderboard([]);
         }
     }
 
