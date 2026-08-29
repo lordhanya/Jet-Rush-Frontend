@@ -22,6 +22,10 @@ class GameOverScene extends Phaser.Scene {
         if (this.soundEnabled) {
             this.sound.play('gameOver');
         }
+
+        this.input.keyboard.on('keydown-ENTER', () => {
+            this.retryGame();
+        });
         
         this.cameras.main.setAlpha(0);
         this.tweens.add({
@@ -29,6 +33,17 @@ class GameOverScene extends Phaser.Scene {
             alpha: 1,
             duration: 500,
             ease: 'Power2'
+        });
+    }
+
+    retryGame() {
+        if (this.soundEnabled) {
+            this.sound.play('tap');
+        }
+        this.cameras.main.flash(200, 255, 68, 102);
+        this.scene.start('GameScene', {
+            soundEnabled: this.soundEnabled,
+            username: this.username
         });
     }
 
@@ -145,14 +160,7 @@ class GameOverScene extends Phaser.Scene {
         const { width, height } = this.scale;
         
         this.createButton(width / 2, height * 0.72, 'RETRY', 0xff4466, () => {
-            if (this.soundEnabled) {
-                this.sound.play('tap');
-            }
-            this.cameras.main.flash(200, 255, 68, 102);
-            this.scene.start('GameScene', { 
-                soundEnabled: this.soundEnabled,
-                username: this.username
-            });
+            this.retryGame();
         });
         
         this.createButton(width / 2, height * 0.84, 'MAIN MENU', 0x2a2a4a, () => {
